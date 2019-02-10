@@ -116,8 +116,8 @@ def run_CNMFE(path_to_hdf5_file):
 # In the following example, the datasets contains additional attributes such as the animal's identity and frame rate. Both are located at the root of the HDF5 file.
 # Check the first frame of the movie to see if it's in correct order.
 
-	dims = data['movie'].attrs['dims']
-	frame_0 = data['movie'][0].reshape(dims)
+	#dims = data['movie'].attrs['dims']
+	#frame_0 = data['movie'][0].reshape(dims)
 	#figure()
 	#imshow(frame_0)
 	#show()
@@ -170,4 +170,6 @@ def run_CNMFE(path_to_hdf5_file):
 	pd.DataFrame(A).to_hdf(out_path+'A', key='df')
 
 	return()
+
+run_CNMFE(path_to_hdf5_file)
 
