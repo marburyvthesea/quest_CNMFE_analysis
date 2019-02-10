@@ -24,8 +24,8 @@ import h5py as hd
 from time import time
 import av
 #specific to miniscopy
-from miniscoPy.base.motion_correction import *
-from miniscoPy import setup_cluster, CNMFE, generate_data, get_default_parameters
+from motion_correction_jjm import *
+from miniscopy import setup_cluster, CNMFE, generate_data, get_default_parameters
 import tables
 #import dview
 
