@@ -104,7 +104,8 @@ def run_CNMFE(path_to_hdf5_file):
 # 
 # The HDF5 file (called data in this example) contains a Numpy array called 'movie' of size (number of frames, number of pixels). The cool thing about HDF5 format is that you can attach attributes (i.e. extra information) to every dataset or group it contains. Here, we attached the attributes of the frame dimension and the recording duration to the dataset 'movie'.
 # load hdf5 file with motion corrected data
-	
+	c, procs, n_processes = setup_cluster(backend='local', n_processes=8, single_thread=False)
+
 	data = hd.File(path_to_hdf5_file, 'r+')
 
 	print(data['movie'].attrs['dims']) # width and height of the frame
@@ -168,6 +169,7 @@ def run_CNMFE(path_to_hdf5_file):
 
 	pd.DataFrame(C).to_hdf(out_path+'C', key='df')
 	pd.DataFrame(A).to_hdf(out_path+'A', key='df')
+	data.close()
 
 	return()
 
