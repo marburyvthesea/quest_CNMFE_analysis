@@ -21,4 +21,4 @@ cd /home/jma819/miniscope/analysis_code/miniscoPy/jjm_module
 #run normcorr
 
 
-python main_cnmfe_e_jjm_script.py /projects/p30771/miniscope/data/GRIN009/1_23_2019/motion_corrected_cnmfe.hdf5
+python main_cnmfe_e_jjm_script.py /projects/p30771/miniscope/data/GRIN009/1_23_2019/ motion_corrected_cnmfe.hdf5

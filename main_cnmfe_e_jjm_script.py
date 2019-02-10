@@ -99,11 +99,13 @@ def run_normcorr(folder_name,files):
 
 	return()
 
-def run_CNMFE(path_to_hdf5_file):
+def run_CNMFE(path_to_hdf5_file, folder_name):
 # ## WORKING WITH HDF5
 # 
 # The HDF5 file (called data in this example) contains a Numpy array called 'movie' of size (number of frames, number of pixels). The cool thing about HDF5 format is that you can attach attributes (i.e. extra information) to every dataset or group it contains. Here, we attached the attributes of the frame dimension and the recording duration to the dataset 'movie'.
 # load hdf5 file with motion corrected data
+	parameters = yaml.load(open(folder_name+'/parameters.yaml', 'r'), Loader=PrettySafeLoader)
+
 	c, procs, n_processes = setup_cluster(backend='local', n_processes=8, single_thread=False)
 
 	data = hd.File(path_to_hdf5_file, 'r+')
@@ -174,6 +176,7 @@ def run_CNMFE(path_to_hdf5_file):
 
 	return()
 
-motion_corrected_input = str(sys.argv[1])
-run_CNMFE(motion_corrected_input)
+folder_name = str(sys.argv[1])
+motion_corrected_file = str(sys.argv[2])
+run_CNMFE(folder_name+motion_corrected_input, folder_name)
 
