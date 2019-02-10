@@ -1,11 +1,11 @@
 #!/bin/bash
 #MSUB -A p30771
-#MSUB -q normal
-#MSUB -l walltime=06:00:60
+#MSUB -q short
+#MSUB -l walltime=04:00:60
 #MSUB -M johnjmarshall@u.northwestern.edu
 #MSUB -j oe
 #MSUB -N CNMFE
-#MSUB -l nodes=1:ppn=12
+#MSUB -l nodes=1:ppn=20
 cd ~
 
 #add project directory to PATH
