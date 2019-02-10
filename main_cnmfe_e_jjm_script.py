@@ -173,5 +173,6 @@ def run_CNMFE(path_to_hdf5_file):
 
 	return()
 
-run_CNMFE(path_to_hdf5_file)
+motion_corrected_input = str(sys.argv[1])
+run_CNMFE(motion_corrected_input)
 
