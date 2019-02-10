@@ -108,10 +108,10 @@ def run_CNMFE(path_to_hdf5_file):
 
 	data = hd.File(path_to_hdf5_file, 'r+')
 
-	print(data['movie'].attrs['dims']) # width and height of the frame
-	print(data['movie'].attrs['duration']) # number of frames
-	print(data.attrs['folder'])
-	print(data.attrs['filename'])
+	#print(data['movie'].attrs['dims']) # width and height of the frame
+	#print(data['movie'].attrs['duration']) # number of frames
+	#print(data.attrs['folder'])
+	#print(data.attrs['filename'])
 
 
 # In the following example, the datasets contains additional attributes such as the animal's identity and frame rate. Both are located at the root of the HDF5 file.
@@ -130,6 +130,7 @@ def run_CNMFE(path_to_hdf5_file):
 	parameters['cnmfe']['init_params']['min_corr'] = 0.8
 	parameters['cnmfe']['init_params']['min_pnr'] = 1.5
 
+	print('starting cnmfe')
 	cnm = CNMFE(data, parameters['cnmfe'])
 	cnm.fit(procs)
 
