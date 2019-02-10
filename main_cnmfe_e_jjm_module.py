@@ -176,7 +176,5 @@ def run_CNMFE(path_to_hdf5_file, folder_name):
 
 	return()
 
-folder_name = str(sys.argv[1])
-motion_corrected_file = str(sys.argv[2])
-run_CNMFE(folder_name+motion_corrected_file, folder_name)
+
 
