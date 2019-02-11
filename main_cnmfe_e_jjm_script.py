@@ -107,6 +107,7 @@ def run_CNMFE(path_to_hdf5_file, folder_name):
 	parameters = yaml.load(open(folder_name+'/parameters.yaml', 'r'), Loader=PrettySafeLoader)
 
 	c, procs, n_processes = setup_cluster(backend='local', n_processes=8, single_thread=False)
+	print('started cluster')
 
 	data = hd.File(path_to_hdf5_file, 'r+')
 
@@ -114,7 +115,6 @@ def run_CNMFE(path_to_hdf5_file, folder_name):
 	#print(data['movie'].attrs['duration']) # number of frames
 	#print(data.attrs['folder'])
 	#print(data.attrs['filename'])
-
 
 # In the following example, the datasets contains additional attributes such as the animal's identity and frame rate. Both are located at the root of the HDF5 file.
 # Check the first frame of the movie to see if it's in correct order.
@@ -125,7 +125,6 @@ def run_CNMFE(path_to_hdf5_file, folder_name):
 	#imshow(frame_0)
 	#show()
 
-
 # ## RUNNING CNMF-E 
 
 	parameters['cnmfe']['init_params']['thresh_init'] = 1.2
@@ -133,6 +132,7 @@ def run_CNMFE(path_to_hdf5_file, folder_name):
 	parameters['cnmfe']['init_params']['min_pnr'] = 1.5
 
 	print('starting cnmfe')
+	print('file: ' + path_to_hdf5_file)
 	cnm = CNMFE(data, parameters['cnmfe'])
 	cnm.fit(procs)
 
@@ -156,7 +156,6 @@ def run_CNMFE(path_to_hdf5_file, folder_name):
 
 	cn, pnr = cnm.get_correlation_info()
 
-
 # Here all the spatial footprints (the A matrix) are normalized between 0 and 1 and the sum of all responses is then displayed.
 
 	dims = cnm.dims
@@ -178,5 +177,5 @@ def run_CNMFE(path_to_hdf5_file, folder_name):
 
 folder_name = str(sys.argv[1])
 motion_corrected_file = str(sys.argv[2])
-run_CNMFE(folder_name+motion_corrected_file, folder_name)
+run_CNMFE(folder_name+'/'+motion_corrected_file, folder_name)
 
