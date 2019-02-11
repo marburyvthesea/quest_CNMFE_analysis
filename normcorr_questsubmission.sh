@@ -27,4 +27,4 @@ cd /home/jma819/miniscope/analysis_code/miniscoPy/jjm_module
 #run normcorr
 
 
-python normcorr_jjm_script.py /projects/p30771/miniscope/data/GRIN009/1_23_2019 0 37 
+python normcorr_jjm_script.py /projects/p30771/miniscope/data/GRIN009/1_23_2019 0 20 
