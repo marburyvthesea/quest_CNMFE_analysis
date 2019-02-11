@@ -1,7 +1,7 @@
 #!/bin/bash
 #MSUB -A p30771
 #MSUB -q normal
-#MSUB -l walltime=03:59:00
+#MSUB -l walltime=04:00:00
 #MSUB -M johnjmarshall@u.northwestern.edu
 #MSUB -j oe
 #MSUB -N CNMFE
@@ -27,4 +27,4 @@ cd /home/jma819/miniscope/analysis_code/miniscoPy/jjm_module
 #run normcorr
 
 
-python main_cnmfe_e_jjm_script.py /projects/p30771/miniscope/data/GRIN009/1_23_2019/motion_corrected_cnmfe.hdf5
+python main_cnmfe_e_jjm_script.py /projects/p30771/miniscope/data/GRIN009/1_23_2019/ motion_corrected.hdf5
