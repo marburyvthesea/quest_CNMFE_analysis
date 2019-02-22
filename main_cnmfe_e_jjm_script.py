@@ -30,17 +30,6 @@ import tables
 #import dview
 
 
-# In[2]:
-
-# ## LISTING THE MOVIES & LOADING THE PARAMETERS
-# 
-# The miniscope recording system usually outputs a set of avi files in one folder. First, give the path of this folder and list all the avi files within it. Then, save a file that list all the parameters in a yaml format (see parameters.yaml in the miniscoPy/example_movies/). It's better to have one parameters.yaml per recording folder (the same for the entire session)
-
-# ### DOWNLOADING AN EXAMPLE FILE IF NOT ALREADY PRESENT
-
-# In[14]:
-
-
 def load_movies(folder_name):
 
 	files = glob.glob(folder_name+'/msCam*.avi')
@@ -155,25 +144,6 @@ def run_CNMFE(path_to_hdf5_file, folder_name):
 	procs.terminate()
 
 	cn, pnr = cnm.get_correlation_info()
-
-# Here all the spatial footprints (the A matrix) are normalized between 0 and 1 and the sum of all responses is then displayed.
-
-	dims = cnm.dims
-	C = cnm.C.value.copy()
-	A = cnm.A.value.copy()
-
-	# A is normalized to 1 for display
-	A -= np.vstack(A.min(1))
-	A /= np.vstack(A.max(1))
-	Atotal = A.sum(0).reshape(dims)
-
-#plotting functions
-
-	pd.DataFrame(C).to_hdf(out_path+'C', key='df')
-	pd.DataFrame(A).to_hdf(out_path+'A', key='df')
-	data.close()
-
-	return()
 
 folder_name = str(sys.argv[1])
 motion_corrected_file = str(sys.argv[2])
